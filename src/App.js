@@ -58,10 +58,16 @@ class App extends Component {
 
   render() {
     return (
-      <div className="notesWrapper">
+      <div className="notesWrapper gradient1">
         <div className="notesHeader">
-          <div className="heading">To do List</div>
+          <div className="heading">Now 
+            <span className="tagline">Your everyday do tracker
+            </span>
           </div>
+        </div>
+        <div className="notesFooter">
+          <NoteForm addNote={this.addNote}/>
+        </div>
           <div className="notesBody">
             {
             this.state.notes.map((note) => {
@@ -74,9 +80,6 @@ class App extends Component {
             })
           }
           </div>
-          <div className="notesFooter">
-          <NoteForm addNote={this.addNote}/>
-        </div>
       </div>
     );
   }
