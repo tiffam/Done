@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Note from './Note/Note'
 import NoteForm from './NoteForm/NoteForm';
+import Calendar from './Calendar/Calendar';
 import { DB_CONFIG } from './Config/config';
 import firebase from 'firebase/app'
 import 'firebase/database';
@@ -26,7 +27,8 @@ class App extends Component {
     this.database.on('child_added', snap =>{
       previousNotes.push({
         id: snap.key,
-        noteContent: snap.val().noteContent
+        noteContent: snap.val().noteContent,
+        noteDate: snap.val().noteDate
       })
       this.setState({
         note: previousNotes
@@ -46,9 +48,9 @@ class App extends Component {
   })
     }
 
-  addNote(note){
+  addNote(note, newDate){
     //push the note onto the notes array.
-    this.database.push().set({ noteContent: note});
+    this.database.push().set({ noteContent: note, noteDate: newDate.toString()});
   }
 
   removeNote(noteId){
@@ -68,11 +70,14 @@ class App extends Component {
         <div className="notesFooter">
           <NoteForm addNote={this.addNote}/>
         </div>
+
           <div className="notesBody">
             {
             this.state.notes.map((note) => {
               return (
-                <Note noteContent={note.noteContent} 
+                <Note 
+                noteContent={note.noteContent} 
+                noteDate={note.noteDate} 
                 noteId={note.id} 
                 key={note.id} 
                 removeNote ={this.removeNote} />

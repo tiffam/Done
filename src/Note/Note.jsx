@@ -7,6 +7,7 @@ class Note extends Component {
 	constructor(props){
 		super(props);
 		this.noteContent = props.noteContent;
+		this.noteDate = props.noteDate;
 		this.noteId = props.noteId;
 		this.handleRemoveNote = this.handleRemoveNote.bind(this);
 	}
@@ -21,16 +22,18 @@ class Note extends Component {
 				<span className="closedbtn"
 				onClick={() => this.handleRemoveNote(this.noteId)}>&times;
 				</span>
+				<p className="noteContent">{ this.noteDate.slice(0, 15) } </p>
 				<p className="noteContent">{ this.noteContent } </p>
+				
 			</div>
 
 		)
 	}
 }
 
-Note.propTypes = {
-	noteContent: PropTypes.string
+// Note.propTypes = {
+// 	noteContent: PropTypes.string
 
-}
+// }
 
 export default Note;

@@ -5,7 +5,8 @@ class NoteForm extends Component{
 	constructor(props){
 		super(props);
 		this.state = {
-			newNoteContent: ''
+			newNoteContent: '',
+			newDate: ''
 		}
 
 		this.handleUserInput = this.handleUserInput.bind(this);
@@ -21,12 +22,14 @@ class NoteForm extends Component{
 
 	writeNote(event){
 		//calls the method that set the notecontent for a note
+		this.state.newDate = new Date;
 		//to the value of the input
-		this.props.addNote(this.state.newNoteContent);
+		this.props.addNote(this.state.newNoteContent, this.state.newDate);
 		//sets newNoteContent back to an empty string
 
 		this.setState({
-			newNoteContent: ''
+			newNoteContent: '',
+			newDate: ''
 		})
 	}
 
