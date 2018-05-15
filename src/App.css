@@ -81,6 +81,29 @@ background-size: cover;
   display: block;*/
 }
 
+.clock {
+  position: relative;
+}
+
+.hourHands {
+  width: 3px;
+  height: 20px;
+  background-color: black;
+  position: absolute;
+  top: 97px;
+  left: 382px;
+
+}
+
+.minuteHands {
+  width: 3px;
+  height: 13px;
+  background-color: red;
+  position: absolute;
+  top: 104px;
+  left: 385px;
+  transform: rotate(30deg);
+}
 
 .notesBody {
 

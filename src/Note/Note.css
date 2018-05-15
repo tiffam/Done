@@ -12,6 +12,7 @@
   border-radius: 3px;
   box-shadow: 43x 3px 2px #333;
   opacity: 1;
+  height: 30px;
 }
 
 @keyframes fadeIn { from { opacity:0; } to { opacity:0.8; } }
@@ -28,7 +29,15 @@
   float:left;
   padding-right: 70px;
   padding-bottom: 10px;
-  display: block;
+  display: block; 
+}
+
+.subjectTag {
+  background-color: salmon;
+  color: white;
+  border-radius: 5px;
+  padding: 5px;
+  float:center;
 }
 
 .closebtn {

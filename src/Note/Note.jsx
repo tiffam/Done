@@ -8,6 +8,7 @@ class Note extends Component {
 		super(props);
 		this.noteContent = props.noteContent;
 		this.noteDate = props.noteDate;
+		this.noteSubject = props.noteSubject;
 		this.noteId = props.noteId;
 		this.handleRemoveNote = this.handleRemoveNote.bind(this);
 	}
@@ -16,24 +17,29 @@ class Note extends Component {
 		this.props.removeNote(id);
 	}
 
+
 	render(props){
+
+		let display = <p className="noteContent subjectTag">{ this.noteSubject } </p>
+	
+		if (this.noteSubject.length === 0){
+			 display = null;
+		}
+
 		return(
 			<div className="note fade-in">
-				<span className="closedbtn"
+				<span className="closebtn"
 				onClick={() => this.handleRemoveNote(this.noteId)}>&times;
 				</span>
 				<p className="noteContent">{ this.noteDate.slice(0, 15) } </p>
 				<p className="noteContent">{ this.noteContent } </p>
-				
+				{display}
 			</div>
 
 		)
 	}
 }
 
-// Note.propTypes = {
-// 	noteContent: PropTypes.string
 
-// }
 
 export default Note;

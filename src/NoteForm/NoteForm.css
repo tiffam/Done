@@ -26,8 +26,8 @@
 }
 
 .noteInput{
-    width: 800px;
-    min-width: 800px;
+    width: 400px;
+    min-width: 400px;
     font-size: 1.3em;
     padding-left: 20px;
     border-radius: 10px;
@@ -37,7 +37,23 @@
     padding: 10px;
     margin: 30px;
 /*    background-color: rgba(34,49,63,0.8);*/
-    color: #fff;
+    color: black;
+    transition: 0.2s ease-out;
+}
+
+.noteInput2{
+    width: 300px;
+    min-width: 300px;
+    font-size: 1.3em;
+    padding-left: 20px;
+    border-radius: 10px;
+/*    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;*/
+    font-family: 'Comfortaa', sans-serif;
+    padding: 10px;
+    margin: 30px;
+/*    background-color: rgba(34,49,63,0.8);*/
+    color: black;
     transition: 0.2s ease-out;
 }
 

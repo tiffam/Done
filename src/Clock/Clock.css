@@ -1,0 +1,11 @@
+.hourhand {
+	width: 100px;
+	height: 50px;
+	background-color: black;
+}
+
+.minutehand {
+	width: 100px;
+	height: 200px;
+	background-color: black;
+}

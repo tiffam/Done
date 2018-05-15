@@ -3,6 +3,7 @@ import './App.css';
 import Note from './Note/Note'
 import NoteForm from './NoteForm/NoteForm';
 import Calendar from './Calendar/Calendar';
+
 import { DB_CONFIG } from './Config/config';
 import firebase from 'firebase/app'
 import 'firebase/database';
@@ -28,7 +29,8 @@ class App extends Component {
       previousNotes.push({
         id: snap.key,
         noteContent: snap.val().noteContent,
-        noteDate: snap.val().noteDate
+        noteDate: snap.val().noteDate,
+        noteSubject: snap.val().noteSubject
       })
       this.setState({
         note: previousNotes
@@ -48,9 +50,9 @@ class App extends Component {
   })
     }
 
-  addNote(note, newDate){
+  addNote(note, newDate, newSubject){
     //push the note onto the notes array.
-    this.database.push().set({ noteContent: note, noteDate: newDate.toString()});
+    this.database.push().set({ noteContent: note, noteDate: newDate.toString(), noteSubject: newSubject});
   }
 
   removeNote(noteId){
@@ -59,18 +61,25 @@ class App extends Component {
 
 
   render() {
+
+
     return (
       <div className="notesWrapper gradient1">
+              <div className="clock">
+        <div className="hourHands"></div>
+        <div className="minuteHands"></div>
+        </div>
         <div className="notesHeader">
           <div className="heading">Now 
             <span className="tagline">Your everyday do tracker
             </span>
           </div>
         </div>
+
         <div className="notesFooter">
           <NoteForm addNote={this.addNote}/>
         </div>
-
+        <Calendar />
           <div className="notesBody">
             {
             this.state.notes.map((note) => {
@@ -79,6 +88,7 @@ class App extends Component {
                 noteContent={note.noteContent} 
                 noteDate={note.noteDate} 
                 noteId={note.id} 
+                noteSubject = {note.noteSubject}
                 key={note.id} 
                 removeNote ={this.removeNote} />
                 )
