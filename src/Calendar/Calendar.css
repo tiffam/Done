@@ -4,7 +4,7 @@ table, .tableContainer {
 	text-align: center;
 	color: black;
 	padding: 10px;
-	width: 500px;
+	width: 600px;
 	
 }
 
@@ -12,6 +12,20 @@ table, .tableContainer {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     text-align: center;
     border: 10px solid white;
+}
+
+div.arrow-up {
+	width: 0; 
+	height: 0; 
+
+	border-left: 10px solid transparent;  /* left arrow slant */
+	border-right: 10px solid transparent; /* right arrow slant */
+	border-bottom: 10px solid red; /* bottom, add background color here */
+	font-size: 0;
+	line-height: 0;
+	margin-left: -16px;
+	transform: rotate(46deg);
+
 }
 
 th, tr, td {
@@ -22,6 +36,10 @@ th, tr, td {
 	color: black;
 	border: 1px solid gray;
 	padding: 10px;
+}
+
+.today {
+	font-weight: 800;
 }
 
 .active {

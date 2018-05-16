@@ -65,30 +65,20 @@ class App extends Component {
 
     return (
       <div className="notesWrapper gradient1">
-              <div className="clock">
-        <div className="hourHands"></div>
-        <div className="minuteHands"></div>
-        </div>
         <div className="notesHeader">
-          <div className="heading">Now 
+          <span className="heading">N</span>
+          <span className="clock">o</span>
+          <span className="hourHands"></span>
+          <span className="minuteHands"></span>
+          <span>w</span>
             <span className="tagline">Your everyday do tracker
             </span>
           </div>
-        </div>
-
+          <Calendar />
         <div className="notesFooter">
           <NoteForm addNote={this.addNote}/>
         </div>
-        <Calendar noteData={this.state.notes}/>
-        {
-            this.state.notes.map((note) => {
-              return (
-                <Calendar 
-                noteSubject={note.noteSubject}
-                />)
-            })
-        }
-                
+           
           <div className="notesBody">
             {
             this.state.notes.map((note) => {

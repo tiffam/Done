@@ -66,6 +66,8 @@ background-size: cover;
   color: black;
   padding-top: 65px;
   text-align: center;
+  position: relative;
+  padding-bottom: 30px;
   /*display: flex;
   flex: 1 1 5%;
   min-height: 2.5em;
@@ -83,6 +85,8 @@ background-size: cover;
 
 .clock {
   position: relative;
+  display: inline-block;
+
 }
 
 .hourHands {
@@ -90,8 +94,9 @@ background-size: cover;
   height: 20px;
   background-color: black;
   position: absolute;
-  top: 97px;
-  left: 382px;
+  margin-top: 31px;
+  margin-left: -26px;
+
 
 }
 
@@ -100,9 +105,10 @@ background-size: cover;
   height: 13px;
   background-color: red;
   position: absolute;
-  top: 104px;
-  left: 385px;
   transform: rotate(30deg);
+  margin-top: 37px;
+  margin-left: -22px;
+
 }
 
 .notesBody {
