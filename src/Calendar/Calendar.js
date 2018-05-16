@@ -6,6 +6,10 @@ class Calendar extends Component {
 	constructor(props){
 		super(props);
 		this.noteDate = props.noteDate;
+		this.noteContent = props.noteContent;
+		this.noteSubject = props.noteSubject;
+		this.noteId = props.noteId;
+		this.noteData = props.noteData
 	}
 
 			// <div><p>Month</p>
@@ -15,7 +19,7 @@ class Calendar extends Component {
 	render(props){
 		return(
 			<div className="tableContainer">
-				<h3>7 days</h3>
+				<h3>7 days listing</h3>
 				<table className="table">
 					<tr>
 						<th className="subject">Subject</th>
@@ -28,7 +32,7 @@ class Calendar extends Component {
 						<th>Sun</th>
 					</tr>
 					<tr>
-						<td className="subject"></td>
+						<td className="subject">{this.noteSubject}</td>
 						<td className="summary"></td>
 						<td className="summary"></td>
 						<td className="summary active"></td>

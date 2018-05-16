@@ -79,7 +79,16 @@ class App extends Component {
         <div className="notesFooter">
           <NoteForm addNote={this.addNote}/>
         </div>
-        <Calendar />
+        <Calendar noteData={this.state.notes}/>
+        {
+            this.state.notes.map((note) => {
+              return (
+                <Calendar 
+                noteSubject={note.noteSubject}
+                />)
+            })
+        }
+                
           <div className="notesBody">
             {
             this.state.notes.map((note) => {

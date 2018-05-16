@@ -17,7 +17,6 @@ class Note extends Component {
 		this.props.removeNote(id);
 	}
 
-
 	render(props){
 
 		let display = <p className="noteContent subjectTag">{ this.noteSubject } </p>
