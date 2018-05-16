@@ -62,7 +62,7 @@ background-size: cover;
 .notesHeader {
 
   font-family: 'Comfortaa', cursive;
-  font-size: 80px;
+  font-size: 86px;
   color: black;
   padding-top: 65px;
   text-align: center;
@@ -89,25 +89,25 @@ background-size: cover;
 
 }
 
-.hourHands {
+.minHands {
   width: 3px;
   height: 20px;
   background-color: black;
   position: absolute;
-  margin-top: 31px;
-  margin-left: -26px;
+  margin-top: 35px;
+  margin-left: -29px;
 
 
 }
 
-.minuteHands {
+.hrHands {
   width: 3px;
   height: 13px;
   background-color: red;
   position: absolute;
   transform: rotate(30deg);
-  margin-top: 37px;
-  margin-left: -22px;
+  margin-top: 41px;
+  margin-left: -25px;
 
 }
 

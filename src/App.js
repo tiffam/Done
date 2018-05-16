@@ -68,10 +68,10 @@ class App extends Component {
         <div className="notesHeader">
           <span className="heading">N</span>
           <span className="clock">o</span>
-          <span className="hourHands"></span>
-          <span className="minuteHands"></span>
+          <span className="minHands"></span>
+          <span className="hrHands"></span>
           <span>w</span>
-            <span className="tagline">Your everyday do tracker
+            <span className="tagline">An everyday do tracker
             </span>
           </div>
           <Calendar />

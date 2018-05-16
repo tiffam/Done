@@ -30,6 +30,7 @@
   padding-right: 70px;
   padding-bottom: 10px;
   display: block; 
+  position: relative;
 }
 
 .subjectTag {
@@ -37,7 +38,10 @@
   color: white;
   border-radius: 5px;
   padding: 5px;
-  float:center;
+  margin-right:100px;
+  font-size: 10px;
+  position: absolute;
+  left: 720px;
 }
 
 .closebtn {

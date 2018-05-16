@@ -39,7 +39,7 @@ class Calendar extends Component {
 // {yesterday.toString().slice(0, 10)}
 		return(
 			<div className="tableContainer">
-				<h3>7 days listing</h3>
+				<h3>Tasks I did over last 7 days</h3>
 				<table className="table">
 					<tr>
 						<th className="subject">Subject</th>
