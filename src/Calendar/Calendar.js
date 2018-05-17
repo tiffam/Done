@@ -10,7 +10,7 @@ class Calendar extends Component {
 		this.noteContent = props.noteContent;
 		this.noteSubject = props.noteSubject;
 		this.noteId = props.noteId;
-		this.noteData = props.noteData
+		this.noteData = props.noteData;
 	}
 
 	render(props){
@@ -24,6 +24,9 @@ class Calendar extends Component {
 		const dayFive = Moment().subtract(5, 'days').format("ddd MMM D YYYY").toString();
 		const daySix = Moment().subtract(6, 'days').format("ddd MMM D YYYY").toString();
 
+	//declare variables to be used in table
+		let weekDays = [daySix, dayFive, dayFour, dayThree, dayTwo, dayOne, dayZero];
+
 		let classZero;
 		let classOne;
 		let classTwo;
@@ -31,88 +34,102 @@ class Calendar extends Component {
 		let classFour;
 		let classFive;
 		let classSix;
+		let classNames = [classSix, classFive, classFour, classThree, classTwo, classOne, classZero];
+		//create an object so that we can use key
+		let sorted = {};
+		//created an array of all subjects to keep track of individual
+		let allSubjects = [];
+		let addClass = [];
+		let cname= "inactive";
 
-		return(
-			<div className="tableContainer">
+		this.noteData.map((note) => { 
+			if (sorted[note.noteSubject] !== undefined){
+				console.log(note, "note");
+				allSubjects.push(note.noteSubject);
+				sorted[note.noteSubject].push(note);
+			} 
+			if (sorted[note.noteSubject] === undefined) {
+				console.log(note, "note");
+				sorted[note.noteSubject] = [];
+				sorted[note.noteSubject].push(note);	
+			}
+
+			console.log("inside map and printing sorted javascript", sorted); 
+		});
+
+		//we have an object that has 2 subjects with 2 entries in each of them.
+
+		// all rows => <tr>
+
+
+		function hasDate(array, subj, day){
+			array.map((note=>{
+				// console.log(note.noteSubject, subj, "noteSubject === subj");
+				// console.log(note.noteDate, day, "note.noteDate === day");
+				if(note.noteSubject == subj && note.noteDate === day) {
+				cname = "active";
+				
+			} else {
+				cname = 'inactive'
+			}
+
+		}))}
+		
+
+		let subjTitle = Object.keys(sorted).map((item)=>{
+			Object.keys(sorted[item]).map((element) => {
+				console.log(sorted[item][element], "sorted[item][element]");
+				console.log(sorted[item], "sorted[item]");
+
+			})
+
+			return (
+					 <tr>
+						<th className="subject">{sorted[item][0].noteSubject}</th>
+						{ 
+
+								weekDays.map((day)=> {
+								
+									let currentRow = sorted[item][0].noteSubject;
+									hasDate(this.noteData, currentRow, day);
+									console.log(cname);
+									// if(hasDate(this.noteData, currentRow, day)){
+									// 	cname = "active";
+									// 	console.log(cname);
+									
+									// console.log(sorted[item][0].noteDate, "sorted[item][0].noteDate");
+									// console.log(sorted[item][0].noteSubject, "sorted[item][0].noteSubject");
+									return(
+									<th className={ cname }></th>)
+								})			
+						}
+					</tr>);
+			})
+
+
+
+			// all rows ( each column in a single row)
+		const allRows = weekDays.map((day)=> {
+					return(
+					<th className="">{day}</th>)
+		})
+
+		return(<div className="tableContainer">
 				<h3>Snapshot of your done list</h3>
 				<table className="table">
-					<tr>
-						<th className="subject + {class}">Subject</th>
-						<th className="six">{daySix}</th>
-						<th className="five">{dayFive}</th>
-						<th className="four">{dayFour}</th>
-						<th className="three">{dayThree}</th>
-						<th className="two">{dayTwo}</th>
-						<th className="one">{dayOne}</th>
-						<th className=" subzero today">{dayZero}</th>
-						<div className="arrow-up"></div>
-					</tr>
-						{ 		this.noteData.map((note) => {
-									let allSubject = [];
-									console.log(note);
-									this.noteData.map((note) => {
-										allSubject.push(note.noteSubject);
-									});
-									let uniqueSubject = Array.from(new Set(allSubject));
-									console.log(uniqueSubject);
-
-									for (let i = 0; i < uniqueSubject.length; i++){
-										if(uniqueSubject[i] === note.noteSubject && daySix === note.noteDate) {
-											classSix = "summary active"
-										} else {
-											classSix = "summary"
-										}
-										if(uniqueSubject[i] === note.noteSubject && dayFive === note.noteDate) {
-											classFive="summary active"
-										} else {
-											classSix = "summary"
-										}
-										if(uniqueSubject[i] === note.noteSubject && dayFour === note.noteDate) {
-											classFour="summary active"
-										} else {
-											classSix = "summary"
-										}
-										if(uniqueSubject[i] === note.noteSubject && dayThree === note.noteDate) {
-											classThree="summary active"
-										} else {
-											classSix = "summary"
-										}
-										if(uniqueSubject[i] === note.noteSubject && dayTwo === note.noteDate) {
-											classTwo="summary active"
-										} else {
-											classSix = "summary"
-										}
-										if(uniqueSubject[i] === note.noteSubject && dayOne === note.noteDate) {
-											classOne="summary active"
-										} else {
-											classSix = "summary"
-										}
-										if(uniqueSubject[i] === note.noteSubject && dayZero === note.noteDate) {
-											classZero="summary active"
-										} else {
-											classSix = "summary"
-										}
-									}
-
-									return (
-											<tr>
-											<td key={note.id} className="subject">{note.noteSubject}</td>
-											<td className={classSix}></td>
-											<td className={classFive}></td>
-											<td className={classFour}></td>
-											<td className={classThree}></td>
-											<td className={classTwo}></td>
-											<td className={classOne}></td>
-											<td className={classZero}></td>
-											</tr>)
-								
-									} 
-								)}
-							</table>
-						</div>
-					)
+				<tr>				
+				<th className="">Subject</th>
+				{allRows}
+				</tr>
+				{subjTitle
 				}
-			}
+				</table>
+			</div>
+			)
+		}
+	}
+
+
 		
 
 
