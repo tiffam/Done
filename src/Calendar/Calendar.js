@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import styles from './Calendar.css'
+import styles from './Calendar.css';
+import Moment from 'moment';
 
 class Calendar extends Component {
 	
@@ -12,82 +13,56 @@ class Calendar extends Component {
 		this.noteData = props.noteData
 	}
 
-			// <div><p>Month</p>
-			// 	<p>{ this.noteDate.slice(3, 7) } </p>
-			// </div>
-
-
-		// this.noteData.map((note) => {
-  //             return (
-		// 	let display = <tr>
-		// 				<td className="subject">{</td>
-		// 				<td className="summary"></td>
-		// 				<td className="summary"></td>
-		// 				<td className="summary active"></td>
-		// 				<td className="summary active"></td>
-		// 				<td className="summary active"></td>
-		// 				<td className="summary"></td>
-		// 				<td className="summary active"></td>
-		// 			</tr>
-
-
 	render(props){
-		let today = new Date
-		let yesterday = new Date
-		yesterday = new Date(yesterday.setDate(yesterday.getDate() - 1))
 
-// {yesterday.toString().slice(0, 10)}
+		const dayZero = Moment().format("ddd MMM D YYYY").toString();
+		const dayOne = Moment().subtract(1, 'days').format("ddd MMM D YYYY").toString();
+		const dayTwo = Moment().subtract(2, 'days').format("ddd MMM D YYYY").toString();
+		const dayThree = Moment().subtract(3, 'days').format("ddd MMM D YYYY").toString();
+		const dayFour = Moment().subtract(4, 'days').format("ddd MMM D YYYY").toString();
+		const dayFive = Moment().subtract(5, 'days').format("ddd MMM D YYYY").toString();
+		const daySix = Moment().subtract(6, 'days').format("ddd MMM D YYYY").toString();
+
 		return(
 			<div className="tableContainer">
-				<h3>Tasks I did over last 7 days</h3>
+				<h3>Snapshot of your done list</h3>
 				<table className="table">
 					<tr>
-						<th className="subject">Subject</th>
-						<th>9 May</th>
-						<th>10 May</th>
-						<th>11 May</th>
-						<th>12 May</th>
-						<th>13 May</th>
-						<th>14 May</th>
-						<th>15 May</th>
-						<th className="today">TODAY </th>
+						<th className="subject + {class}">Subject</th>
+						<th className="six">{daySix}</th>
+						<th className="five">{dayFive}</th>
+						<th className="four">{dayFour}</th>
+						<th className="three">{dayThree}</th>
+						<th className="two">{dayTwo}</th>
+						<th className="one">{dayOne}</th>
+						<th className=" subzero today">{dayZero}</th>
 						<div className="arrow-up"></div>
 					</tr>
-					<tr>
-		 				<td className="subject">Javascript</td>
-						<td className="summary"></td>
-						<td className="summary"></td>
-						<td className="summary active"></td>
-						<td className="summary"></td>
-						<td className="summary active"></td>
-						<td className="summary"></td>
-						<td className="summary active"></td>
-						<td className="summary active today"></td>
-					</tr>
-					<tr>
-		 				<td className="subject">Postgres</td>
-						<td className="summary"></td>
-						<td className="summary"></td>
-						<td className="summary active"></td>
-						<td className="summary active"></td>
-						<td className="summary"></td>
-						<td className="summary"></td>
-						<td className="summary"></td>
-						<td className="summary"></td>
-					</tr>
-					<tr>
-		 				<td className="subject">HTML</td>
-						<td className="summary"></td>
-						<td className="summary active"></td>
-						<td className="summary"></td>
-						<td className="summary active"></td>
-						<td className="summary active"></td>
-						<td className="summary"></td>
-						<td className="summary"></td>
-						<td className="summary"></td>
-					</tr>
-
-					
+						{ 
+							this.noteData.map((note, index) => {
+								let allSubject = [];
+								this.noteData.map((note) => {
+									allSubject.push(note.noteSubject);
+								});
+								let uniqueSubject = Array.from(new Set(allSubject));
+								console.log(uniqueSubject);
+								for (let i = 0; i < uniqueSubject.length; i++){
+									if(uniqueSubject[i]===note.noteSubject) {
+										return (
+											<tr>
+											<td key={note.id} className="subject">{note.noteSubject}</td>
+											<td className="summary daySix">{note.noteDate === daySix ? 1 : 0}</td>
+											<td className="summary dayFive">{note.noteDate === dayFive ? 1 : 0}</td>
+											<td className="summary dayFour">{note.noteDate === dayFour ? 1 : 0}</td>
+											<td className="summary dayThree">{note.noteDate === dayThree ? 1 : 0}</td>
+											<td className="summary dayTwo">{note.noteDate === dayTwo ? 1 : 0}</td>
+											<td className="summary dayOne">{note.noteDate === dayOne ? 1 : 0}</td>
+											<td className="summary dayZero">{note.noteDate === dayZero ? 1 : 0}</td>
+											</tr>)
+									} 
+								}
+							})
+						}
 				</table>
 			</div>
 

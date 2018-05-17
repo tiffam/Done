@@ -74,7 +74,7 @@ class App extends Component {
             <span className="tagline">An everyday do tracker
             </span>
           </div>
-          <Calendar />
+          <Calendar noteData={this.state.notes}/>
         <div className="notesFooter">
           <NoteForm addNote={this.addNote}/>
         </div>

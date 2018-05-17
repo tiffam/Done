@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './NoteForm.css';
+import Moment from 'moment';
 
 class NoteForm extends Component{
 	constructor(props){
@@ -29,7 +30,7 @@ class NoteForm extends Component{
 
 	writeNote(event){
 		//calls the method that set the notecontent for a note
-		this.state.newDate = new Date;
+		this.state.newDate = Moment().format("ddd MMM D YYYY").toString();
 		//to the value of the input
 		this.props.addNote(this.state.newNoteContent, this.state.newDate, this.state.newSubject);
 		//sets newNoteContent back to an empty string
@@ -45,11 +46,11 @@ class NoteForm extends Component{
 		return(
 			<div className="formWrapper">
 				<input className="noteInput"
-					placeholder="Write a new note..."
+					placeholder="What I just did and..."
 					value={this.state.newNoteContent}
 					onChange={this.handleUserInput} />
 				<input className="noteInput2" 
-				placeholder="Enter related subjects"
+				placeholder="...in which subject?"
 				onChange={this.handleUserInput2} 
 				value={this.state.newSubject} />
 
