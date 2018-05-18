@@ -13,6 +13,24 @@ class Calendar extends Component {
 		this.noteData = props.noteData;
 	}
 
+
+							 hasDate(array, subj, day){
+
+								let cname = "inactive";
+								array.map((note)=>{
+				// console.log(note.noteSubject, subj, "noteSubject === subj");
+				// console.log(note.noteDate, day, "note.noteDate === day");
+									if(note.noteSubject === subj && note.noteDate === day) {
+										cname = "active";
+				// console.log(note.noteSubject, subj, "noteSubject === subj");
+										console.log(note.noteDate, note.noteSubject, note.id, day, cname, "note.noteDate === day")
+									};
+
+								})
+
+								return cname;
+							}
+
 	render(props){
 
 		const dayZero = Moment().format("ddd MMM D YYYY").toString();
@@ -40,21 +58,21 @@ class Calendar extends Component {
 		//created an array of all subjects to keep track of individual
 		let allSubjects = [];
 		let addClass = [];
-		let cname= "inactive";
+		let cname= "";
 
 		this.noteData.map((note) => { 
 			if (sorted[note.noteSubject] !== undefined){
-				console.log(note, "note");
+				// console.log(note, "note");
 				allSubjects.push(note.noteSubject);
 				sorted[note.noteSubject].push(note);
 			} 
 			if (sorted[note.noteSubject] === undefined) {
-				console.log(note, "note");
+				// console.log(note, "note");
 				sorted[note.noteSubject] = [];
 				sorted[note.noteSubject].push(note);	
 			}
 
-			console.log("inside map and printing sorted javascript", sorted); 
+			// console.log("inside map and printing sorted javascript", sorted); 
 		});
 
 		//we have an object that has 2 subjects with 2 entries in each of them.
@@ -62,49 +80,48 @@ class Calendar extends Component {
 		// all rows => <tr>
 
 
-		function hasDate(array, subj, day){
-			array.map((note=>{
-				// console.log(note.noteSubject, subj, "noteSubject === subj");
-				// console.log(note.noteDate, day, "note.noteDate === day");
-				if(note.noteSubject == subj && note.noteDate === day) {
-				cname = "active";
+		// function hasDate(array, subj, day){
+		// 	array.map((note=>{
+		// 		// console.log(note.noteSubject, subj, "noteSubject === subj");
+		// 		// console.log(note.noteDate, day, "note.noteDate === day");
+		// 		if(note.noteSubject == subj && note.noteDate === day) {
+		// 		cname = "active";
 				
-			} else {
-				cname = 'inactive'
-			}
+		// 	} else {
+		// 		cname = 'inactive'
+		// 	}
 
-		}))}
+		// }))}
 		
 
 		let subjTitle = Object.keys(sorted).map((item)=>{
-			Object.keys(sorted[item]).map((element) => {
-				console.log(sorted[item][element], "sorted[item][element]");
-				console.log(sorted[item], "sorted[item]");
-
-			})
+			// Object.keys(sorted[item]).map((element) => {
+			// 	// console.log(sorted[item][element].noteSubject, "sorted[item][element]");
+			// 	// console.log(sorted[item], "sorted[item]");
+			// })
 
 			return (
 					 <tr>
 						<th className="subject">{sorted[item][0].noteSubject}</th>
 						{ 
-
-								weekDays.map((day)=> {
-								
-									let currentRow = sorted[item][0].noteSubject;
-									hasDate(this.noteData, currentRow, day);
-									console.log(cname);
+							weekDays.map((day)=> {
+							console.log(sorted[item][0].noteSubject, "day");
+							let currentRow = sorted[item][0].noteSubject;
+						
+							let foo = this.hasDate(this.noteData, currentRow, day);
 									// if(hasDate(this.noteData, currentRow, day)){
 									// 	cname = "active";
 									// 	console.log(cname);
 									
 									// console.log(sorted[item][0].noteDate, "sorted[item][0].noteDate");
 									// console.log(sorted[item][0].noteSubject, "sorted[item][0].noteSubject");
-									return(
-									<th className={ cname }></th>)
-								})			
+								return(
+									<th className={ foo }></th>)
+							})
 						}
-					</tr>);
-			})
+					</tr>
+				);
+		})
 
 
 
@@ -121,8 +138,7 @@ class Calendar extends Component {
 				<th className="">Subject</th>
 				{allRows}
 				</tr>
-				{subjTitle
-				}
+				{subjTitle}
 				</table>
 			</div>
 			)

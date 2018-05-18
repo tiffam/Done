@@ -59,9 +59,7 @@ class App extends Component {
     this.database.child(noteId).remove();
   }
 
-
   render() {
-
 
     return (
       <div className="notesWrapper gradient1">
