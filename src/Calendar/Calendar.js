@@ -95,14 +95,17 @@ class Calendar extends Component {
 		return(<div className="tableContainer">
 			<h3>Snapshot of your done list</h3>
 			<table className="table">
+			<tbody>
 			<tr>				
 			<th className="">Subject</th>
 			{allRows}
 			</tr>
 			{subjTitle}
+			</tbody>
 			</table>
 		</div>)
 	}
 }
+
 
 export default Calendar;
