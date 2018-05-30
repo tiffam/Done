@@ -1,10 +1,3 @@
-/*html{
-  width: 100%;
-  height: 100%;
-  /*height: 100%;
-}*/
-
-
 body {
   background:
   linear-gradient(
@@ -26,31 +19,6 @@ body {
 background-blend-mode: screen;
 background-repeat: no-repeat;
 background-size: cover;
-
-
-/*  width: 100%;
-  min-height:100%;*/
-/*  background: 
-    linear-gradient(-45deg, rgba(0,0,0,0.3), rgba(0, 40, 105, 0.8)),
-    url('./Static/img/2.jpg');*/
-/*  background-attachment: fixed;
-  background-size: cover; */
-}
-
-* {
-/*  height: 100%;
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  border: 0;
-*/}
-
-.notesWrapper {
-  
-/*  display: flex;
-  flex: 1 1 auto;
-  flex-direction: column;
-  height: 100%;*/
 }
 
 .tagline {
@@ -60,7 +28,6 @@ background-size: cover;
 }
 
 .notesHeader {
-
   font-family: 'Comfortaa', cursive;
   font-size: 86px;
   color: black;
@@ -68,25 +35,11 @@ background-size: cover;
   text-align: center;
   position: relative;
   padding-bottom: 30px;
-  /*display: flex;
-  flex: 1 1 5%;
-  min-height: 2.5em;
-  max-height: 2em;
-  font-size: 3.2em;
-  color: salmon;
-  font-family: 'Tajawal', sans-serif;
-  text-align: center;
-  align-content: center;
-  padding:100px 0px 20px 0px;
-  margin-bottom: 6px;
-  background-color: white;
-  display: block;*/
 }
 
 .clock {
   position: relative;
   display: inline-block;
-
 }
 
 .minHands {
@@ -96,8 +49,6 @@ background-size: cover;
   position: absolute;
   margin-top: 35px;
   margin-left: -29px;
-
-
 }
 
 .hrHands {
@@ -108,22 +59,4 @@ background-size: cover;
   transform: rotate(30deg);
   margin-top: 41px;
   margin-left: -25px;
-
-}
-
-.notesBody {
-
-/*  padding-top: 24px;
-  display: flex;
-  flex: 1 1 85%;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  align-content: flex-start;
-  overflow: auto;*/
-}
-
-.notesFooter {
-/*  display: flex;
-  flex: 1 1 5%;
-  background-color: rgba(0,0,0,0.5);*/
 }

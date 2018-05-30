@@ -14,22 +14,17 @@ class Calendar extends Component {
 	}
 
 
-							 hasDate(array, subj, day){
+	hasDate(array, subj, day){
 
-								let cname = "inactive";
-								array.map((note)=>{
-				// console.log(note.noteSubject, subj, "noteSubject === subj");
-				// console.log(note.noteDate, day, "note.noteDate === day");
-									if(note.noteSubject === subj && note.noteDate === day) {
-										cname = "active";
-				// console.log(note.noteSubject, subj, "noteSubject === subj");
-										console.log(note.noteDate, note.noteSubject, note.id, day, cname, "note.noteDate === day")
-									};
+		let cname = "inactive";
+		array.map((note)=>{
 
-								})
-
-								return cname;
-							}
+		if(note.noteSubject === subj && note.noteDate === day) {
+			cname = "active";
+		};
+	})
+		return cname;
+	}
 
 	render(props){
 
@@ -53,7 +48,7 @@ class Calendar extends Component {
 		let classFive;
 		let classSix;
 		let classNames = [classSix, classFive, classFour, classThree, classTwo, classOne, classZero];
-		//create an object so that we can use key
+		//create an object so that we can use key value pairs.
 		let sorted = {};
 		//created an array of all subjects to keep track of individual
 		let allSubjects = [];
@@ -61,44 +56,18 @@ class Calendar extends Component {
 		let cname= "";
 
 		this.noteData.map((note) => { 
-			if (sorted[note.noteSubject] !== undefined){
-				// console.log(note, "note");
+			if (sorted[note.noteSubject] !== undefined) {
 				allSubjects.push(note.noteSubject);
 				sorted[note.noteSubject].push(note);
 			} 
 			if (sorted[note.noteSubject] === undefined) {
-				// console.log(note, "note");
 				sorted[note.noteSubject] = [];
 				sorted[note.noteSubject].push(note);	
 			}
-
-			// console.log("inside map and printing sorted javascript", sorted); 
 		});
-
-		//we have an object that has 2 subjects with 2 entries in each of them.
-
-		// all rows => <tr>
-
-
-		// function hasDate(array, subj, day){
-		// 	array.map((note=>{
-		// 		// console.log(note.noteSubject, subj, "noteSubject === subj");
-		// 		// console.log(note.noteDate, day, "note.noteDate === day");
-		// 		if(note.noteSubject == subj && note.noteDate === day) {
-		// 		cname = "active";
-				
-		// 	} else {
-		// 		cname = 'inactive'
-		// 	}
-
-		// }))}
 		
 
 		let subjTitle = Object.keys(sorted).map((item)=>{
-			// Object.keys(sorted[item]).map((element) => {
-			// 	// console.log(sorted[item][element].noteSubject, "sorted[item][element]");
-			// 	// console.log(sorted[item], "sorted[item]");
-			// })
 
 			return (
 					 <tr>
@@ -109,12 +78,6 @@ class Calendar extends Component {
 							let currentRow = sorted[item][0].noteSubject;
 						
 							let foo = this.hasDate(this.noteData, currentRow, day);
-									// if(hasDate(this.noteData, currentRow, day)){
-									// 	cname = "active";
-									// 	console.log(cname);
-									
-									// console.log(sorted[item][0].noteDate, "sorted[item][0].noteDate");
-									// console.log(sorted[item][0].noteSubject, "sorted[item][0].noteSubject");
 								return(
 									<th className={ foo }></th>)
 							})
@@ -123,30 +86,23 @@ class Calendar extends Component {
 				);
 		})
 
-
-
-			// all rows ( each column in a single row)
+		// all rows ( each column in a single row)
 		const allRows = weekDays.map((day)=> {
-					return(
-					<th className="">{day}</th>)
+			return(
+				<th className="">{day}</th>)
 		})
 
 		return(<div className="tableContainer">
-				<h3>Snapshot of your done list</h3>
-				<table className="table">
-				<tr>				
-				<th className="">Subject</th>
-				{allRows}
-				</tr>
-				{subjTitle}
-				</table>
-			</div>
-			)
-		}
+			<h3>Snapshot of your done list</h3>
+			<table className="table">
+			<tr>				
+			<th className="">Subject</th>
+			{allRows}
+			</tr>
+			{subjTitle}
+			</table>
+		</div>)
 	}
-
-
-		
-
+}
 
 export default Calendar;

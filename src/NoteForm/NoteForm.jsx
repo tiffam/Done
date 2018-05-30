@@ -15,8 +15,9 @@ class NoteForm extends Component{
 		this.handleUserInput2 = this.handleUserInput2.bind(this);
 		this.writeNote = this.writeNote.bind(this);
 	}
-//when user input changes, set the newNoteContent.
-// to the value of what is in the input box.
+	
+	//when user input changes, set the newNoteContent
+	// to the value of what is in the input box.
 	handleUserInput(event){
 		this.setState({
 			newNoteContent: event.target.value //value of text input
